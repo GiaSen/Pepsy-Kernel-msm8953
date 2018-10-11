@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dpkg --add-architecture i386 && apt-get update && apt-get install -y git ccache automake bc lzop bison gperf build-essential zip curl zlib1g-dev zlib1g-dev:i386 g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng &&
-git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 /pipeline/build/root/toolchain/aarch64-linux-android-4.9
+git clone https://github.com/GiaSen/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 /pipeline/build/root/toolchain/aarch64-linux-android-4.9 && git clone https://github.com/PsyMan47/SnapDragonLLVM_6.0 /pipeline/build/root/toolchain/SnapDragonLLVM_6.0
 
 KERNEL_DIR=$PWD
 ANYKERNEL_DIR=$KERNEL_DIR/AnyKernel2
@@ -20,6 +20,9 @@ rm $KERNEL_DIR/out/arch/arm64/boot/Image.gz $KERNEL_DIR/out/arch/arm64/boot/Imag
 export ARCH=arm64
 export KBUILD_BUILD_USER="GiaSen"
 export KBUILD_BUILD_HOST="Pepsy"
+export CC=/pipeline/build/root/toolchain/SnapDragonLLVM_6.0/prebuilt/linux-x86_64/bin/clang
+export CXX=/pipeline/build/root/toolchain/SnapDragonLLVM_6.0/prebuilt/linux-x86_64/bin/clang++
+export CLANG_TRIPLE=aarch64-linux-gnu-
 export CROSS_COMPILE=/pipeline/build/root/toolchain/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 export LD_LIBRARY_PATH=/pipeline/build/root/toolchain/aarch64-linux-android-4.9/lib/
 export USE_CCACHE=1
