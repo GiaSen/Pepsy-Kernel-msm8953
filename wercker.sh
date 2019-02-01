@@ -10,7 +10,7 @@ CCACHEDIR=../CCACHE/mido
 DATE=$(date +"%d%m%Y")
 KERNEL_NAME="Pepsy-Kernel"
 DEVICE="-mido-"
-VER="-v0.2"
+VER="-v0.3"
 TYPE="-P"
 FINAL_ZIP="$KERNEL_NAME""$DEVICE""$DATE""$TYPE""$VER".zip
 
