@@ -37,7 +37,15 @@ chown -R root:root $ramdisk/*;
 ## AnyKernel install
 dump_boot;
 
+# init.rc
+insert_line init.rc "import /init.pepsy.rc" after "import /init.trace.rc" "import /init.pepsy.rc";
 
+# sepolicy
+$bin/magiskpolicy --load sepolicy --save sepolicy \
+  "allow init rootfs file execute_no_trans" \
+;
+
+# end ramdisk changes
 
 write_boot;
 
